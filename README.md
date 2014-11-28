@@ -4,7 +4,7 @@
 
 ![img](http://i.imgur.com/7yGGXdd.png)
 
-A utility for 2D line drawing in ThreeJS, by expanding the points in a vertex shader for fast variable thickness, anti-aliasing, line dashes, and other effects.
+A utility for 2D line drawing in ThreeJS, by expanding a polyline in a vertex shader for variable thickness, anti-aliasing, gradients, line dashes, and other GPU effects.
 
 See [test.js](test/test.js) for a complete example, as well as other shader applications. 
 
@@ -37,7 +37,11 @@ app.scene.add(mesh)
 
 #### `geometry = Line(path, [opt])`
 
-Creates a new Line geometry from a 2D list of points. 
+Creates a new Line geometry from a 2D list of points. You can also ignore `path` and just pass an `opt` object. Options:
+
+- `distances` if true, each vertex will also pass a `lineDistance` attribute to the vertex shader. This can be used to compute the U texture coordinate from the start of the line to its end.
+- `closed` if true, a segment will be drawn from the last point to the the first point, and the normals will be adjusted accordingly
+
 
 ## License
 
