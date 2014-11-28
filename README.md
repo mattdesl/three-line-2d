@@ -37,11 +37,14 @@ app.scene.add(mesh)
 
 #### `geometry = Line(path, [opt])`
 
-Creates a new Line geometry from a 2D list of points. You can also ignore `path` and just pass an `opt` object. Options:
+Creates a new Line geometry from a 2D list of points. You can also omit the `path` and just pass an `opt` object to initially construct the geometry. Options:
 
 - `distances` if true, each vertex will also pass a `lineDistance` attribute to the vertex shader. This can be used to compute the U texture coordinate from the start of the line to its end.
-- `closed` if true, a segment will be drawn from the last point to the the first point, and the normals will be adjusted accordingly
+- `closed` if true, a segment will be drawn from the last point to the the first point, and the normals will be adjusted accordingly (default false)
 
+#### `geometry.update(path[, closed])`
+
+Updates the geometry with the new 2D polyline, which can optionally be a closed loop (default false).
 
 ## License
 
