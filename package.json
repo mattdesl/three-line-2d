@@ -1,0 +1,51 @@
+{
+  "name": "three-line-2d",
+  "version": "1.0.0",
+  "description": "lines expanded in a vertex shader",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "as-number": "^1.0.0",
+    "inherits": "^2.0.1",
+    "polyline-normals": "^2.0.0",
+    "xtend": "^4.0.0"
+  },
+  "devDependencies": {
+    "adaptive-bezier-curve": "^1.0.3",
+    "arc-to": "^1.0.0",
+    "domready": "^1.0.7",
+    "normalize-path-scale": "^1.1.1",
+    "three": "^0.69.0",
+    "three-orbit-viewer": "^69.2.2"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "three",
+    "js",
+    "line",
+    "render",
+    "2d",
+    "join",
+    "miter",
+    "thick",
+    "gl.LINES",
+    "lines",
+    "gl",
+    "polyline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/three-line-2d.git"
+  },
+  "homepage": "https://github.com/mattdesl/three-line-2d",
+  "bugs": {
+    "url": "https://github.com/mattdesl/three-line-2d/issues"
+  }
+}
