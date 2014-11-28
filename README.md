@@ -29,8 +29,7 @@ var mat = new THREE.ShaderMaterial(BasicShader({
 
 var mesh = new THREE.Mesh(curveGeometry, mat)
 app.scene.add(mesh)
-
-    ```
+```
 
 ## Usage
 
