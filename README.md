@@ -10,8 +10,8 @@ See [test.js](test/test.js) for a complete example, as well as other shader appl
 
 ```js
 var bezier = require('adaptive-bezier-curve')
-var Line = require('three-line-2d')
-var BasicShader = require('three-line-2d/shaders/basic')
+var Line = require('three-line-2d')(THREE)
+var BasicShader = require('three-line-2d/shaders/basic')(THREE)
 
 //build a smooth bezier curve in world units
 var quality = 5
