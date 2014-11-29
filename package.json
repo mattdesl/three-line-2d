@@ -1,6 +1,6 @@
 {
   "name": "three-line-2d",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "lines expanded in a vertex shader",
   "main": "index.js",
   "license": "MIT",
