@@ -18,7 +18,7 @@ var quality = 5
 var curve = bezier([0, 0], [0.5, 1], [1, 1], [2, 0], quality)
 
 //create our geometry
-var curveGeometry = Line()
+var curveGeometry = Line(curve)
 
 //create a material using a basic shader
 var mat = new THREE.ShaderMaterial(BasicShader({
