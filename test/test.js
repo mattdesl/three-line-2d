@@ -15,7 +15,6 @@ var curvePath = path1()
 var circlePath = normalize(arc(0, 0, 25, 0, Math.PI*2, false, 64))
 var boxPath = [[0, 0], [1, 0], [1, 1], [0, 1]]
 
-
 function run() {
     var app = OrbitViewer({
         clearColor: 0x000000,
