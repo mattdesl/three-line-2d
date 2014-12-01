@@ -18,10 +18,12 @@
   "devDependencies": {
     "adaptive-bezier-curve": "^1.0.3",
     "arc-to": "^1.0.0",
+    "browserify": "^6.3.3",
     "domready": "^1.0.7",
     "normalize-path-scale": "^1.1.1",
     "three": "^0.69.0",
-    "three-orbit-viewer": "^69.2.2"
+    "three-orbit-viewer": "^69.2.2",
+    "uglify-js": "^2.4.15"
   },
   "scripts": {
     "test": "node test.js",
