@@ -2,7 +2,9 @@
 
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
 
-![img](http://i.imgur.com/7yGGXdd.png)
+[![img](http://i.imgur.com/7yGGXdd.png)](http://mattdesl.github.io/three-line-2d/)
+
+([click to view demo](http://mattdesl.github.io/three-line-2d/))
 
 A utility for 2D line drawing in ThreeJS, by expanding a polyline in a vertex shader for variable thickness, anti-aliasing, gradients, line dashes, and other GPU effects.
 
