@@ -24,7 +24,8 @@
     "three-orbit-viewer": "^69.2.2"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "browserify test/test.js | uglifyjs -cm > bundle.js"
   },
   "keywords": [
     "three",
