@@ -55,7 +55,7 @@ function run() {
     }))
     var boxMesh = new THREE.Mesh(boxGeometry, boxMat)
     boxMesh.position.y = 0.5
-    boxMesh.position.z = -0.5
+    boxMesh.position.z = 0.5
     boxMesh.scale.multiplyScalar(0.5)
     app.scene.add(boxMesh)
 
