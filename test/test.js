@@ -28,7 +28,8 @@ function run() {
     })
 
     //////// Our bezier curve 
-    var curveGeometry = Line(curvePath)
+    var curveGeometry = Line()
+    curveGeometry.update(curvePath) //can change geometry after the fact
     var mat = new THREE.ShaderMaterial(BasicShader({
         side: THREE.DoubleSide,
         transparent: true,

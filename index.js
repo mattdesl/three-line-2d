@@ -18,6 +18,8 @@ module.exports = function(THREE) {
             path = []
         }
 
+        opt = opt||{}
+
         this._positions = new THREE.BufferAttribute(null, 3)
         this._normals = new THREE.BufferAttribute(null, 2)
         this._miters = new THREE.BufferAttribute(null, 1)
@@ -55,7 +57,7 @@ module.exports = function(THREE) {
             this._positions.array = new Float32Array(count * 3)
             this._normals.array = new Float32Array(count * 2)
             this._miters.array = new Float32Array(count * 1)
-            this._indices.array = new Uint32Array((path.length-1) * 6)
+            this._indices.array = new Uint32Array(Math.max(0, (path.length-1) * 6))
 
             if (this._distances)
                 this._distances.array = new Float32Array(count * 1)
