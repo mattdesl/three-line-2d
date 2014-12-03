@@ -62,13 +62,14 @@ module.exports = function(THREE) {
             if (this._distances)
                 this._distances.array = new Float32Array(count * 1)
         }
+        var useDist = Boolean(this._distances)
 
         this._positions.needsUpdate = true
         this._miters.needsUpdate = true
         this._normals.needsUpdate = true
         this._indices.needsUpdate = true
-
-        var useDist = Boolean(this._distances)
+        if (useDist)
+            this._distances.needsUpdate = true
         
         var index = 0,
             c = 0, 

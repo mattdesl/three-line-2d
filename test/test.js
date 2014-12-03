@@ -29,7 +29,6 @@ function run() {
 
     //////// Our bezier curve 
     var curveGeometry = Line()
-    curveGeometry.update(curvePath) //can change geometry after the fact
     var mat = new THREE.ShaderMaterial(BasicShader({
         side: THREE.DoubleSide,
         transparent: true,
@@ -59,6 +58,12 @@ function run() {
     boxMesh.position.z = 0.5
     boxMesh.scale.multiplyScalar(0.5)
     app.scene.add(boxMesh)
+
+
+    //testing delayed update of buffers
+    setTimeout(function() {
+        curveGeometry.update(curvePath) 
+    }, 500)
 
     var time = 0
     app.on('tick', function(dt) {
