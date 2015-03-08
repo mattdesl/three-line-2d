@@ -20,13 +20,15 @@
     "arc-to": "^1.0.0",
     "browserify": "^6.3.3",
     "domready": "^1.0.7",
+    "garnish": "^2.1.0",
     "normalize-path-scale": "^1.1.1",
     "three": "^0.69.0",
     "three-orbit-viewer": "^69.2.2",
-    "uglify-js": "^2.4.15"
+    "uglify-js": "^2.4.15",
+    "wzrd": "^1.2.1"
   },
   "scripts": {
-    "test": "node test.js",
+    "test": "wzrd test/test.js | garnish",
     "build": "browserify test/test.js | uglifyjs -cm > bundle.js"
   },
   "keywords": [
