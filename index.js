@@ -57,7 +57,7 @@ module.exports = function(THREE) {
             this._positions.array = new Float32Array(count * 3)
             this._normals.array = new Float32Array(count * 2)
             this._miters.array = new Float32Array(count * 1)
-            this._indices.array = new Uint32Array(Math.max(0, (path.length-1) * 6))
+            this._indices.array = new Uint16Array(Math.max(0, (path.length-1) * 6))
 
             if (this._distances)
                 this._distances.array = new Float32Array(count * 1)
