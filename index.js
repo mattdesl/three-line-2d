@@ -20,23 +20,10 @@ module.exports = function(THREE) {
 
         opt = opt||{}
 
-        this._positions = new THREE.BufferAttribute(null, 3)
-        this._normals = new THREE.BufferAttribute(null, 2)
-        this._miters = new THREE.BufferAttribute(null, 1)
-        this._indices = new THREE.BufferAttribute(null, 1)
-
         if (opt.distances) 
-            this._distances = new THREE.BufferAttribute(null, 1)
+            this.addAttribute('lineDistance', new THREE.BufferAttribute(null, 1))
 
         this.update(path, opt.closed)
-
-        this.addAttribute('position', this._positions)
-        this.addAttribute('lineNormal', this._normals)
-        this.addAttribute('lineMiter', this._miters)
-        this.addAttribute('index', this._indices)
-
-        if (opt.distances)
-            this.addAttribute('lineDistance', this._distances)
     }
 
     inherits(LineMesh, THREE.BufferGeometry)
@@ -50,31 +37,35 @@ module.exports = function(THREE) {
             path.push(path[0])
             normals.push(normals[0])
         }
-        
-        if (!this._positions.array ||
-            (path.length !== this._positions.array.length/3/VERTS_PER_POINT)) {
+        this.addAttribute('position', new THREE.BufferAttribute(null, 3))
+        this.addAttribute('lineNormal', new THREE.BufferAttribute(null, 2))
+        this.addAttribute('lineMiter', new THREE.BufferAttribute(null, 1))
+        if (this.attributes['lineDistance']) 
+            this.addAttribute('lineDistance', new THREE.BufferAttribute(null, 1))
+
+        this.setIndex(new THREE.BufferAttribute(null, 1))
+        if (!this.attributes['position'].array ||
+            (path.length !== this.attributes['position'].array.length/3/VERTS_PER_POINT)) {
             var count = path.length * VERTS_PER_POINT
-            this._positions.array = new Float32Array(count * 3)
-            this._normals.array = new Float32Array(count * 2)
-            this._miters.array = new Float32Array(count * 1)
-            this._indices.array = new Uint16Array(Math.max(0, (path.length-1) * 6))
+            this.attributes['position'].array = new Float32Array(count * 3)
+            this.attributes['lineNormal'].array = new Float32Array(count * 2)
+            this.attributes['lineMiter'].array = new Float32Array(count * 1)
+            this.index.array = new Uint16Array(Math.max(0, (path.length-1) * 6))
 
-            if (this._distances)
-                this._distances.array = new Float32Array(count * 1)
+            if (this.attributes['lineDistance'])
+                this.attributes['lineDistance'].array = new Float32Array(count * 1)
         }
-        var useDist = Boolean(this._distances)
+        var useDist = Boolean(this.attributes['lineDistance'])
 
-        this._positions.needsUpdate = true
-        this._miters.needsUpdate = true
-        this._normals.needsUpdate = true
-        this._indices.needsUpdate = true
+        this.attributes['position'].needsUpdate = true
+        this.attributes['lineNormal'].needsUpdate = true
+        this.attributes['lineMiter'].needsUpdate = true
         if (useDist)
-            this._distances.needsUpdate = true
-        
+            this.attributes['lineDistance'].needsUpdate = true
         var index = 0,
             c = 0, 
             dIndex = 0,
-            indexArray = this._indices.array
+            indexArray = this.index.array
             
         path.forEach(function(point, pointIndex, self) {
             var i = index
@@ -85,13 +76,13 @@ module.exports = function(THREE) {
             indexArray[c++] = i + 1 
             indexArray[c++] = i + 3 
 
-            this._positions.setXYZ(index++, point[0], point[1], 0)
-            this._positions.setXYZ(index++, point[0], point[1], 0)
+            this.attributes['position'].setXYZ(index++, point[0], point[1], 0)
+            this.attributes['position'].setXYZ(index++, point[0], point[1], 0)
 
             if (useDist) {
                 var d = pointIndex/(self.length-1)
-                this._distances.setX(dIndex++, d)
-                this._distances.setX(dIndex++, d)
+                this.attributes['lineDistance'].setX(dIndex++, d)
+                this.attributes['lineDistance'].setX(dIndex++, d)
             }
         }, this)
 
@@ -100,11 +91,11 @@ module.exports = function(THREE) {
         normals.forEach(function(n) {
             var norm = n[0]
             var miter = n[1]
-            this._normals.setXY(nIndex++, norm[0], norm[1])
-            this._normals.setXY(nIndex++, norm[0], norm[1])
+            this.attributes['lineNormal'].setXY(nIndex++, norm[0], norm[1])
+            this.attributes['lineNormal'].setXY(nIndex++, norm[0], norm[1])
 
-            this._miters.setX(mIndex++, -miter)
-            this._miters.setX(mIndex++, miter)
+            this.attributes['lineMiter'].setX(mIndex++, -miter)
+            this.attributes['lineMiter'].setX(mIndex++, miter)
         }, this)
     }
     return LineMesh

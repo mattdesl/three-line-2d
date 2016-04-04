@@ -13,18 +13,12 @@ module.exports = function(THREE) {
                 diffuse: { type: 'c', value: new THREE.Color(opt.diffuse) },
                 time: { type: 'f', value: 0 },
             },
-            attributes: {
-                lineMiter:  { type: 'f', value: 0 },
-                lineDistance: { type: 'f', value: 0 },
-                lineNormal: { type: 'v2', value: new THREE.Vector2() }
-            },
             vertexShader: [
                 "uniform float thickness;",
                 "attribute float lineMiter;",
                 "attribute vec2 lineNormal;",
                 "attribute float lineDistance;",
                 "varying float edge;",
-                "varying float smooth;",
                 "varying float lineU;",
                 "uniform float time;",
                 "void main() {",
@@ -51,6 +45,10 @@ module.exports = function(THREE) {
                 "}"
             ].join("\n")
         }, opt)
+        // remove to satisfy r73
+        delete opt.thickness
+        delete opt.opacity
+        delete opt.diffuse
         return ret
     }
 }

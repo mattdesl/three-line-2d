@@ -78,6 +78,16 @@ function run() {
         //animate gradient
         boxMat.uniforms.time.value = time
     })
+    window.addEventListener( 'resize', onWindowResize(app), false );
+
+}
+function onWindowResize(app) {
+
+    app.camera.aspect = window.innerWidth / window.innerHeight;
+    app.camera.updateProjectionMatrix();
+
+    app.renderer.setSize( window.innerWidth, window.innerHeight );
+
 }
 
 function path1() {

@@ -1,19 +1,22 @@
-var xtend = require('xtend')
-var number = require('as-number')
-
 module.exports = function(THREE) {
     return function (opt) {
         opt = opt||{}
+        var thickness = typeof opt.thickness === "number" ? opt.thickness : 0.1
+        var opacity = typeof opt.opacity === "number" ? opt.opacity : 1.0
+        var diffuse = typeof opt.diffuse === "number" ? opt.diffuse : 0xffffff
+        var precision = opt.precision || "highp"
 
-        var ret = xtend({
+        // remove to satisfy r73
+        delete opt.thickness
+        delete opt.opacity
+        delete opt.diffuse
+        delete opt.precision
+
+        return Object.assign({
             uniforms: {
-                thickness: { type: 'f', value: number(opt.thickness, 0.1) },
-                opacity: { type: 'f', value: number(opt.opacity, 1.0) },
-                diffuse: { type: 'c', value: new THREE.Color(opt.diffuse) }
-            },
-            attributes: {
-                lineMiter:  { type: 'f', value: 0 },
-                lineNormal: { type: 'v2', value: new THREE.Vector2() }
+                thickness: { type: 'f', value: thickness },
+                opacity: { type: 'f', value: opacity },
+                diffuse: { type: 'c', value:  new THREE.Color(diffuse) }
             },
             vertexShader: [
                 "uniform float thickness;",
@@ -25,13 +28,12 @@ module.exports = function(THREE) {
                 "}"
             ].join("\n"),
             fragmentShader: [   
-                "uniform float opacity;",
+                "percision "+ precision +" float;",
                 "uniform vec3 diffuse;",
                 "void main() {",
                     "gl_FragColor = vec4(diffuse, opacity);",
                 "}"
             ].join("\n")
         }, opt)
-        return ret
     }
 }
