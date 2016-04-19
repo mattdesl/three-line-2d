@@ -9,31 +9,31 @@
     "email": "dave.des@gmail.com",
     "url": "https://github.com/mattdesl"
   },
+  "semistandard": {
+    "globals": [
+      "THREE"
+    ]
+  },
   "dependencies": {
-    "as-number": "^1.0.0",
     "inherits": "^2.0.1",
     "object-assign": "^4.0.1",
-    "orbit-controls": "^1.0.4",
-    "polyline-normals": "^2.0.0",
-    "raf-loop": "^1.1.3",
-    "xtend": "^4.0.0"
+    "polyline-normals": "^2.0.0"
   },
   "devDependencies": {
     "adaptive-bezier-curve": "^1.0.3",
+    "raf-loop": "^1.1.3",
     "arc-to": "^1.0.0",
-    "browserify": "^6.3.3",
+    "as-number": "^1.0.0",
     "budo": "^8.2.1",
-    "domready": "^1.0.7",
-    "garnish": "^2.1.0",
-    "normalize-path-scale": "^1.1.1",
-    "three": "^0.69.0",
-    "three-orbit-viewer": "^69.2.2",
-    "uglify-js": "^2.4.15",
-    "wzrd": "^1.2.1"
+    "orbit-controls": "^1.0.4",
+    "browserify": "^13.0.0",
+    "normalize-path-scale": "^2.0.0",
+    "three": "^0.75.0",
+    "three-orbit-viewer": "^69.3.0",
+    "uglify-js": "^2.4.15"
   },
   "scripts": {
-    "test": "wzrd test/test.js | garnish",
-    "build": "browserify test/test.js | uglifyjs -cm > bundle.js",
+    "build": "browserify test/index.js | uglifyjs -cm > bundle.js",
     "start": "budo test/index.js:bundle.js --live"
   },
   "keywords": [

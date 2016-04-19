@@ -35,10 +35,10 @@ function createApp (opt) {
   // 3D orbit controller with damping
   const controls = createControls(assign({
     canvas,
-    theta: 40 * Math.PI / 180,
-    phi: -70 * Math.PI / 180,
-    distance: 10,
-    distanceBounds: [ 2, 100 ]
+    theta: 5 * Math.PI / 180,
+    phi: -90 * Math.PI / 180,
+    distance: 3,
+    distanceBounds: [ 2, 40 ]
   }, opt));
 
   // Update frame size
