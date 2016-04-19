@@ -1,6 +1,6 @@
 {
   "name": "three-line-2d",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "lines expanded in a vertex shader",
   "main": "index.js",
   "license": "MIT",
@@ -9,25 +9,34 @@
     "email": "dave.des@gmail.com",
     "url": "https://github.com/mattdesl"
   },
+  "semistandard": {
+    "globals": [
+      "THREE"
+    ]
+  },
   "dependencies": {
-    "as-number": "^1.0.0",
     "inherits": "^2.0.1",
-    "polyline-normals": "^2.0.0",
-    "xtend": "^4.0.0"
+    "object-assign": "^4.0.1",
+    "polyline-normals": "^2.0.0"
   },
   "devDependencies": {
     "adaptive-bezier-curve": "^1.0.3",
     "arc-to": "^1.0.0",
-    "browserify": "^6.3.3",
-    "domready": "^1.0.7",
-    "normalize-path-scale": "^1.1.1",
-    "three": "^0.69.0",
-    "three-orbit-viewer": "^69.2.2",
+    "as-number": "^1.0.0",
+    "browserify": "^13.0.0",
+    "budo": "^8.2.1",
+    "normalize-path-scale": "^2.0.0",
+    "orbit-controls": "^1.0.4",
+    "raf-loop": "^1.1.3",
+    "semistandard": "^7.0.5",
+    "three": "^0.75.0",
+    "three-orbit-viewer": "^69.3.0",
     "uglify-js": "^2.4.15"
   },
   "scripts": {
-    "test": "node test.js",
-    "build": "browserify test/test.js | uglifyjs -cm > bundle.js"
+    "build": "browserify test/index.js | uglifyjs -cm > bundle.js",
+    "start": "budo test/index.js:bundle.js --live",
+    "test": "semistandard"
   },
   "keywords": [
     "three",
