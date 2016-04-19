@@ -24,7 +24,11 @@ module.exports = function createLineMesh (THREE) {
     if (opt.distances) {
       this.addAttribute('lineDistance', new THREE.BufferAttribute(null, 1));
     }
-    this.setIndex(new THREE.BufferAttribute(null, 1));
+    if (typeof this.setIndex === 'function') {
+      this.setIndex(new THREE.BufferAttribute(null, 1));
+    } else {
+      this.addAttribute('index', new THREE.BufferAttribute(null, 1));
+    }
     this.update(path, opt.closed);
   }
 
@@ -44,7 +48,7 @@ module.exports = function createLineMesh (THREE) {
     var attrNormal = this.getAttribute('lineNormal');
     var attrMiter = this.getAttribute('lineMiter');
     var attrDistance = this.getAttribute('lineDistance');
-    var attrIndex = this.getIndex();
+    var attrIndex = typeof this.getIndex === 'function' ? this.getIndex() : this.getAttribute('index');
 
     if (!attrPosition.array ||
         (path.length !== attrPosition.array.length / 3 / VERTS_PER_POINT)) {

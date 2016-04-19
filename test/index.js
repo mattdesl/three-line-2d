@@ -26,7 +26,6 @@ function setup () {
   var curveGeometry = Line(curvePath);
   var mat = new THREE.ShaderMaterial(BasicShader({
     side: THREE.DoubleSide,
-    // transparent: true,
     diffuse: 0x5cd7ff,
     thickness: 0.1
   }));

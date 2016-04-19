@@ -19,7 +19,11 @@ function createApp (opt) {
   const renderer = new THREE.WebGLRenderer(assign({
     antialias: true // default enabled
   }, opt));
-  renderer.setPixelRatio(dpr);
+  
+  // Not available in old ThreeJS versions
+  if (typeof renderer.setPixelRatio === 'function') {
+    renderer.setPixelRatio(dpr);
+  }
 
   // Show the <canvas> on screen
   const canvas = renderer.domElement;

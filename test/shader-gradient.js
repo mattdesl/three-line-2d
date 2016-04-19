@@ -11,7 +11,7 @@ module.exports = function (THREE) {
         thickness: { type: 'f', value: number(opt.thickness, 0.1) },
         opacity: { type: 'f', value: number(opt.opacity, 1.0) },
         diffuse: { type: 'c', value: new THREE.Color(opt.diffuse) },
-        time: { type: 'f', value: 0 },
+        time: { type: 'f', value: 0 }
       },
       vertexShader: [
         'uniform float thickness;',
@@ -49,7 +49,6 @@ module.exports = function (THREE) {
     delete opt.thickness;
     delete opt.opacity;
     delete opt.diffuse;
-
 
     var threeVers = (parseInt(THREE.REVISION, 10) || 0) | 0;
     if (threeVers < 72) {
