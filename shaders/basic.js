@@ -5,15 +5,17 @@ module.exports = function(THREE) {
     return function (opt) {
         opt = opt||{}
 
+        var threeVers = (parseInt(THREE.REVISION, 10) || 0) | 0
+        var attributes = {
+            lineMiter:  { type: 'f', value: 0 },
+            lineNormal: { type: 'v2', value: new THREE.Vector2() }
+        }
+
         var ret = xtend({
             uniforms: {
                 thickness: { type: 'f', value: number(opt.thickness, 0.1) },
                 opacity: { type: 'f', value: number(opt.opacity, 1.0) },
                 diffuse: { type: 'c', value: new THREE.Color(opt.diffuse) }
-            },
-            attributes: {
-                lineMiter:  { type: 'f', value: 0 },
-                lineNormal: { type: 'v2', value: new THREE.Vector2() }
             },
             vertexShader: [
                 "uniform float thickness;",
@@ -32,6 +34,11 @@ module.exports = function(THREE) {
                 "}"
             ].join("\n")
         }, opt)
+
+        if (threeVers < 72) {
+            // Old versions need to specify shader attributes
+            ret.attributes = attributes
+        }
         return ret
     }
 }

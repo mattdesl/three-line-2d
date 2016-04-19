@@ -15,11 +15,11 @@ module.exports = function(THREE) {
                 dashDistance: { type: 'f', value: 0.2 },
                 dashSmooth: { type: 'f', value: 0.01 }
             },
-            attributes: {
-                lineMiter:  { type: 'f', value: 0 },
-                lineDistance: { type: 'f', value: 0 },
-                lineNormal: { type: 'v2', value: new THREE.Vector2() }
-            },
+            // attributes: {
+            //     lineMiter:  { type: 'f', value: 0 },
+            //     lineDistance: { type: 'f', value: 0 },
+            //     lineNormal: { type: 'v2', value: new THREE.Vector2() }
+            // },
             vertexShader: [
                 "uniform float thickness;",
                 "attribute float lineMiter;",

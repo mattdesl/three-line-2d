@@ -13,11 +13,11 @@ module.exports = function(THREE) {
                 diffuse: { type: 'c', value: new THREE.Color(opt.diffuse) },
                 time: { type: 'f', value: 0 },
             },
-            attributes: {
-                lineMiter:  { type: 'f', value: 0 },
-                lineDistance: { type: 'f', value: 0 },
-                lineNormal: { type: 'v2', value: new THREE.Vector2() }
-            },
+            // attributes: {
+            //     lineMiter:  { type: 'f', value: 0 },
+            //     lineDistance: { type: 'f', value: 0 },
+            //     lineNormal: { type: 'v2', value: new THREE.Vector2() }
+            // },
             vertexShader: [
                 "uniform float thickness;",
                 "attribute float lineMiter;",
