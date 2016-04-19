@@ -44,10 +44,11 @@ module.exports = function (THREE) {
         '}'
       ].join('\n')
     }, opt);
+
     // remove to satisfy r73
-    delete opt.thickness;
-    delete opt.opacity;
-    delete opt.diffuse;
+    delete ret.thickness;
+    delete ret.opacity;
+    delete ret.diffuse;
 
     var threeVers = (parseInt(THREE.REVISION, 10) || 0) | 0;
     if (threeVers < 72) {
