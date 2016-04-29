@@ -5,7 +5,7 @@ module.exports = function (THREE) {
     opt = opt || {};
     var thickness = typeof opt.thickness === 'number' ? opt.thickness : 0.1;
     var opacity = typeof opt.opacity === 'number' ? opt.opacity : 1.0;
-    var diffuse = opt.diffuse ? opt.diffuse : 0xffffff;
+    var diffuse = opt.diffuse !== null ? opt.diffuse : 0xffffff;
 
     // remove to satisfy r73
     delete opt.thickness;
