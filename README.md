@@ -10,7 +10,7 @@ A utility for 2D line drawing in ThreeJS, by expanding a polyline in a vertex sh
 
 Works in ThreeJS r69-r75, and possibly newer versions.
 
-See [test.js](test/test.js) for a complete example, as well as other shader applications. 
+See [test/index.js](test/index.js) for a complete example, as well as other shader applications. 
 
 ```js
 var bezier = require('adaptive-bezier-curve');
