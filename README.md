@@ -52,6 +52,26 @@ Creates a new Line geometry from a 2D list of points. Options:
 
 Updates the geometry with the new 2D polyline, which can optionally be a closed loop (default false).
 
+## Running from Source
+
+```sh
+git clone https://github.com/mattdesl/three-line-2d.git
+cd three-line-2d
+npm install
+```
+
+You can run the demo locally on `localhost:9966` with:
+
+```sh
+npm run start
+```
+
+You can build the demo to a static JavaScript bundle with:
+
+```sh
+npm run build
+```
+
 ## Changelog
 
 ## 1.1.0
