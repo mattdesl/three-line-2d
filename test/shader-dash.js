@@ -40,7 +40,7 @@ module.exports = function (THREE) {
         'void main() {',
         'float lineUMod = mod(lineU, 1.0/dashSteps) * dashSteps;',
         'float dash = smoothstep(dashDistance, dashDistance+dashSmooth, length(lineUMod-0.5));',
-        'gl_FragColor = vec4(vec3(dash), opacity * dash);',
+        'gl_FragColor = vec4(diffuse * vec3(dash), opacity * dash);',
         '}'
       ].join('\n')
     }, opt);
