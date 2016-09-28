@@ -18,16 +18,16 @@ module.exports = function createLineMesh (THREE) {
 
     opt = opt || {};
 
-    this.addAttribute('position', new THREE.BufferAttribute(null, 3));
-    this.addAttribute('lineNormal', new THREE.BufferAttribute(null, 2));
-    this.addAttribute('lineMiter', new THREE.BufferAttribute(null, 1));
+    this.addAttribute('position', new THREE.BufferAttribute(undefined, 3));
+    this.addAttribute('lineNormal', new THREE.BufferAttribute(undefined, 2));
+    this.addAttribute('lineMiter', new THREE.BufferAttribute(undefined, 1));
     if (opt.distances) {
-      this.addAttribute('lineDistance', new THREE.BufferAttribute(null, 1));
+      this.addAttribute('lineDistance', new THREE.BufferAttribute(undefined, 1));
     }
     if (typeof this.setIndex === 'function') {
-      this.setIndex(new THREE.BufferAttribute(null, 1));
+      this.setIndex(new THREE.BufferAttribute(undefined, 1));
     } else {
-      this.addAttribute('index', new THREE.BufferAttribute(null, 1));
+      this.addAttribute('index', new THREE.BufferAttribute(undefined, 1));
     }
     this.update(path, opt.closed);
   }
@@ -50,23 +50,44 @@ module.exports = function createLineMesh (THREE) {
     var attrDistance = this.getAttribute('lineDistance');
     var attrIndex = typeof this.getIndex === 'function' ? this.getIndex() : this.getAttribute('index');
 
+    var indexCount = Math.max(0, (path.length - 1) * 6);
     if (!attrPosition.array ||
         (path.length !== attrPosition.array.length / 3 / VERTS_PER_POINT)) {
       var count = path.length * VERTS_PER_POINT;
       attrPosition.array = new Float32Array(count * 3);
       attrNormal.array = new Float32Array(count * 2);
       attrMiter.array = new Float32Array(count);
-      attrIndex.array = new Uint16Array(Math.max(0, (path.length - 1) * 6));
+      attrIndex.array = new Uint16Array(indexCount);
 
       if (attrDistance) {
         attrDistance.array = new Float32Array(count);
       }
     }
 
+    if (undefined !== attrPosition.count) {
+      attrPosition.count = count;
+    }
     attrPosition.needsUpdate = true;
+
+    if (undefined !== attrNormal.count) {
+      attrNormal.count = count;
+    }
     attrNormal.needsUpdate = true;
+
+    if (undefined !== attrMiter.count) {
+      attrMiter.count = count;
+    }
     attrMiter.needsUpdate = true;
+
+    if (undefined !== attrIndex.count) {
+      attrIndex.count = indexCount;
+    }
+    attrIndex.needsUpdate = true;
+
     if (attrDistance) {
+      if (undefined !== attrDistance.count) {
+        attrDistance.count = count;
+      }
       attrDistance.needsUpdate = true;
     }
 
