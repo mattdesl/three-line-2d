@@ -1,6 +1,3 @@
-NOTE: this has been updated to work with newer three.js (0.81)
-
-
 # three-line-2d
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
