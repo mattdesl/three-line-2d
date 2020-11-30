@@ -18,16 +18,16 @@ module.exports = function createLineMesh (THREE) {
 
     opt = opt || {};
 
-    this.addAttribute('position', new THREE.BufferAttribute(undefined, 3));
-    this.addAttribute('lineNormal', new THREE.BufferAttribute(undefined, 2));
-    this.addAttribute('lineMiter', new THREE.BufferAttribute(undefined, 1));
+    this.setAttribute('position', new THREE.BufferAttribute(undefined, 3));
+    this.setAttribute('lineNormal', new THREE.BufferAttribute(undefined, 2));
+    this.setAttribute('lineMiter', new THREE.BufferAttribute(undefined, 1));
     if (opt.distances) {
-      this.addAttribute('lineDistance', new THREE.BufferAttribute(undefined, 1));
+      this.setAttribute('lineDistance', new THREE.BufferAttribute(undefined, 1));
     }
     if (typeof this.setIndex === 'function') {
       this.setIndex(new THREE.BufferAttribute(undefined, 1));
     } else {
-      this.addAttribute('index', new THREE.BufferAttribute(undefined, 1));
+      this.setAttribute('index', new THREE.BufferAttribute(undefined, 1));
     }
     this.update(path, opt.closed);
   }
